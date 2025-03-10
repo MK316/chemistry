@@ -43,10 +43,3 @@ with tabs[1]:
     
     # Add a note about pH ranges
     st.info("🔎 **pH Guide:**\n- Acidic: pH < 7\n- Neutral: pH = 7\n- Basic: pH > 7")
-
-
-
-
-Allow the user to input a pH value.
-Display whether the solution is acidic, neutral, or basic.
-Simulate color changes based on the pH level using a dynamic color display.
