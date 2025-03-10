@@ -11,13 +11,12 @@ st.caption(
     """
 )
 st.caption("This platform was created to demonstrate how Streamlit can be used to build educational apps for future chemistry teachers.")
-st.markdown("---")
 # Add an image or logo (Optional)
 st.image("https://github.com/MK316/chemistry/raw/main/images/chemistry01.png", 
          caption="Enhance Chemistry Learning with Technology", 
          width=400)  # Adjust width value as needed
 
-
+st.markdown("---")
 # Overview of available tools
 st.markdown("### 🚀 Available Tools:")
 st.markdown("1. **Molecular Structure Viewer** – Generate and visualize 3D structures of chemical compounds using SMILES.")
