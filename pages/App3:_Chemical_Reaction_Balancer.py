@@ -4,7 +4,13 @@ from sympy import symbols, Eq, solve
 tabs = st.tabs(["🔎 App overview", "🐾 Practice with APP"])
 
 with tabs[0]:
-    st.caption("Overview")
+    st.markdown("""
+    #### Purpose: To automatically balance chemical reactions using algebraic methods.  
+    ####Key Features:**  
+    - 🔢 Input unbalanced chemical equations.  
+    - ✅ Display balanced reaction.  
+    - 🧪 Identify reactants and products. 
+    """)
 
 with tabs[1]:
     
