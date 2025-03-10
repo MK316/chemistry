@@ -3,6 +3,7 @@ from rdkit import Chem
 from rdkit.Chem import Draw, AllChem
 import py3Dmol
 import pandas as pd
+import tempfile
 
 # Create tabs
 tabs = st.tabs(["🔎 App overview", "🐾 Practice with APP"])
@@ -41,9 +42,16 @@ with tabs[1]:
             viewer.setStyle({"stick": {}})
             viewer.zoomTo()
 
-            # Use st.components.v1.html() to display viewer in Streamlit
-            html = viewer.js()
-            st.components.v1.html(html, height=400, width=400)
+            # Use write_html to generate complete HTML
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".html") as tmpfile:
+                viewer.write_html(tmpfile.name)
+                html_file = tmpfile.name
+
+            # Read HTML file and display it in Streamlit
+            with open(html_file, "r") as file:
+                html_content = file.read()
+
+            st.components.v1.html(html_content, height=400, width=400)
 
         else:
             st.error("Invalid SMILES string. Please try again.")
