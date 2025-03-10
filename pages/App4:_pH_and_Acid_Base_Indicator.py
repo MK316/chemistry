@@ -1,6 +1,6 @@
 import streamlit as st
 
-tabs = st.tabs(["Overview", "Practice with APP")]
+tabs = st.tabs(["Overview", "Practice with APP"])
 with tabs[0]:
 
     st.markdown("""
