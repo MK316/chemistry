@@ -2,9 +2,9 @@ import streamlit as st
 from rdkit import Chem
 from rdkit.Chem import Draw, AllChem
 import py3Dmol
-import tempfile
 import pandas as pd
 
+# Create tabs
 tabs = st.tabs(["🔎 App overview", "🐾 Practice with APP"])
 
 with tabs[0]:
@@ -35,12 +35,15 @@ with tabs[1]:
             AllChem.EmbedMolecule(mol)
             mol_block = Chem.MolToMolBlock(mol)
 
-            # Use py3Dmol for 3D rendering
+            # Create 3D viewer using py3Dmol
             viewer = py3Dmol.view(width=400, height=400)
             viewer.addModel(mol_block, "sdf")
             viewer.setStyle({"stick": {}})
             viewer.zoomTo()
-            viewer.show()
+
+            # Use st.components.v1.html() to display viewer in Streamlit
+            html = viewer.js()
+            st.components.v1.html(html, height=400, width=400)
 
         else:
             st.error("Invalid SMILES string. Please try again.")
@@ -48,23 +51,22 @@ with tabs[1]:
     # Test Cases Table
     test_cases = {
         "SMILES String": [
-            "C",
-            "CCO",
-            "CC(=O)OC1=CC=CC=C1C(=O)O",
-            "C1=CC=CC=C1",
+            "C", 
+            "CCO", 
+            "CC(=O)OC1=CC=CC=C1C(=O)O", 
+            "C1=CC=CC=C1", 
             "CC(C)Cc1ccc(cc1)C(C)C(=O)O"
         ],
         "Molecule": [
-            "Methane",
-            "Ethanol",
-            "Aspirin",
-            "Benzene",
+            "Methane", 
+            "Ethanol", 
+            "Aspirin", 
+            "Benzene", 
             "Ibuprofen"
         ]
     }
     
     # Convert to pandas DataFrame and display
     df = pd.DataFrame(test_cases)
-    
     st.markdown("### 🧪 Test Cases")
     st.table(df)
