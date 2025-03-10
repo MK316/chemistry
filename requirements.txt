@@ -12,3 +12,5 @@ qrcode
 wordcloud
 gtts
 streamlit-drawable-canvas
+transformers
+torch
