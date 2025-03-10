@@ -12,20 +12,22 @@ qa_pairs = {
 # Streamlit app layout
 st.title("🎓 Class Info Chatbot")
 
-# User input
-question = st.text_input("Ask a question about the class:")
+# Dropdown for selecting a question
+selected_question = st.selectbox(
+    "Select a question about the class:",
+    options=["Select a question..."] + list(qa_pairs.keys())
+)
 
-# Check for matching answers
-if question:
-    response = qa_pairs.get(question)
-    
+# Display the answer if a valid question is selected
+if selected_question != "Select a question...":
+    response = qa_pairs.get(selected_question)
     if response:
         st.success(response)
-    else:
-        st.warning("Sorry, I can only answer questions about class time, assignments, make-up classes, and exams.")
 
-# Display possible questions to guide the user
-st.markdown("### 📌 Example Questions:")
-for q in qa_pairs.keys():
-    st.markdown(f"- {q}")
+# Optional: Button to reset the dropdown
+if st.button("Reset"):
+    st.rerun()
 
+# Add a helpful footer or note
+st.markdown("---")
+st.caption("💡 Tip: If you don't see your question listed, try asking during class or office hours!")
