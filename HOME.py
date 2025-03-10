@@ -26,4 +26,4 @@ st.write("👉 Use the navigation menu on the left to explore each tool.")
 st.caption("This platform was created to demonstrate how Streamlit can be used to build educational apps for future chemistry teachers.")
 
 # Add an image or logo (Optional)
-st.image("chemistry.png", caption="Enhance Chemistry Learning with Technology", use_column_width=True)
+st.image("https://github.com/MK316/chemistry/raw/main/images/chemistry01.png", caption="Enhance Chemistry Learning with Technology", use_column_width=True)
