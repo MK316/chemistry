@@ -2,6 +2,7 @@ import streamlit as st
 from rdkit import Chem
 from rdkit.Chem import Draw, AllChem
 import tempfile
+import pandas as pd
 
 # Get SMILES input from user
 smiles = st.text_input("Enter a SMILES string:")
@@ -45,3 +46,27 @@ if smiles:
 
     else:
         st.error("Invalid SMILES string. Please try again.")
+
+# Test Cases Table
+test_cases = {
+    "SMILES String": [
+        "C",
+        "CCO",
+        "CC(=O)OC1=CC=CC=C1C(=O)O",
+        "C1=CC=CC=C1",
+        "CC(C)Cc1ccc(cc1)C(C)C(=O)O"
+    ],
+    "Molecule": [
+        "Methane",
+        "Ethanol",
+        "Aspirin",
+        "Benzene",
+        "Ibuprofen"
+    ]
+}
+
+# Convert to pandas DataFrame and display
+df = pd.DataFrame(test_cases)
+
+st.markdown("### 🧪 Test Cases")
+st.table(df)
