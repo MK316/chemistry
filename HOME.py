@@ -4,17 +4,17 @@ import streamlit as st
 st.set_page_config(page_title="Chemistry Learning Apps", page_icon="🧪")
 
 # Title and introduction
-st.title("🔬 Chemistry Learning Apps")
-
-# Add an image or logo (Optional)
-st.image("https://github.com/MK316/chemistry/raw/main/images/chemistry01.png", 
-         caption="Enhance Chemistry Learning with Technology", 
-         width=400)  # Adjust width value as needed
-st.write(
+st.title("🔬 Chemistry Learning App Gallery")
+st.caption(
     """
     Welcome to the Chemistry Learning Apps! This platform is designed to help future chemistry teachers understand how to integrate technology into their teaching.  
     """
 )
+# Add an image or logo (Optional)
+st.image("https://github.com/MK316/chemistry/raw/main/images/chemistry01.png", 
+         caption="Enhance Chemistry Learning with Technology", 
+         width=400)  # Adjust width value as needed
+
 
 # Overview of available tools
 st.markdown("### 🚀 Available Tools:")
