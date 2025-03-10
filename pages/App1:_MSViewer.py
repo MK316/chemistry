@@ -7,7 +7,19 @@ import pandas as pd
 tabs = st.tabs(["🔎 App overview", "🐾 Practice with APP"])
 
 with tabs[0]:
-    st.caption("Overview")
+    st.markdown("""
+    #### Purpose:
+    + To generate and visualize the 2D and 3D structures of chemical compounds using SMILES notation.  
+   
+    #### Key Features:
+   - 🧪 **SMILES Input** – Allow users to input a SMILES string to generate molecular structures.
+   - 🖼️ **2D Visualization** – Display a 2D structural diagram of the molecule.
+   - 🌐 **3D Model** – Generate a 3D interactive model of the molecule.
+   - 🔄 **Rotation and Zoom** – Users can rotate and zoom into the molecule for detailed examination.
+   - ✅ **Structure Validation** – Provide feedback if the input SMILES is invalid.
+
+
+    """)
 
 with tabs[1]:
     # Get SMILES input from user
