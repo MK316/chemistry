@@ -6,10 +6,10 @@ import pandas as pd
 
 tabs = st.tabs(["🍐 App overview", "🍏 Practice with APP"])
 
-with tab[0]:
+with tabs[0]:
 st.caption("Overview")
 
-with tab[1]:
+with tabs[1]:
     # Get SMILES input from user
     smiles = st.text_input("Enter a SMILES string:")
     
