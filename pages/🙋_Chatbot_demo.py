@@ -13,7 +13,6 @@ model_option = st.radio(
     "Select an AI model:",
     options=[
         "GPT-2 (Hugging Face)", 
-        "Talk to me (MK#16GPT)"
     ],
     index=0  # Default to the first option
 )
