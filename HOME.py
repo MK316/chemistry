@@ -7,7 +7,7 @@ st.set_page_config(page_title="Chemistry Learning Apps", page_icon="🧪")
 st.markdown("### 🔬 Chemistry Learning App Gallery")
 st.caption(
     """
-    Welcome to the Chemistry Learning Apps! This platform is designed to help future chemistry teachers understand how to integrate technology into their teaching. This platform was created to demonstrate how Streamlit can be used to build educational apps for future chemistry teachers.  
+    Welcome to the Chemistry Learning Apps! This platform is designed to help future chemistry teachers understand how to integrate technology into their teaching. This platform was created to demonstrate how Streamlit can be used to build educational apps for future chemistry teachers. (Since Mar. 10, 2025)  
     """)
 
 # Add an image or logo (Optional)
@@ -24,5 +24,7 @@ st.markdown("3. **Chemical Equation Balancer** – Automatically balance chemica
 st.markdown("4. **pH and Acid-Base Indicator** – To understand acids, bases, and neutral solutions based on pH levels.  ")
 st.markdown("5. **States of Matter Simulation** – To visualize how molecules behave in different states of matter.")
 # Footer
+
+st.caption("©️Github: MK316")
 
 
