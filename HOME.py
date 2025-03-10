@@ -20,9 +20,9 @@ st.markdown("---")
 st.markdown("#### 🚀 Available Tools:")
 st.markdown("1. **Molecular Structure Viewer** – Generate and visualize 2D structures of chemical compounds using SMILES.")
 st.markdown("2. **Interactive Periodic Table** – Explore the periodic table and element properties interactively.")
-st.markdown("3. **Chemical Equation Balancer** – Automatically balance chemical reactions using algebraic methods.")
+st.markdown("3. **States of Matter Simulation** – To visualize how molecules behave in different states of matter.")
 st.markdown("4. **pH and Acid-Base Indicator** – To understand acids, bases, and neutral solutions based on pH levels.  ")
-st.markdown("5. **States of Matter Simulation** – To visualize how molecules behave in different states of matter.")
+st.markdown("5. **Chemical Equation Balancer** – Automatically balance chemical reactions using algebraic methods.")
 # Footer
 
 st.caption("©️Github: MK316")
