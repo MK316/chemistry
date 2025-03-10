@@ -53,13 +53,13 @@ with tabs[1]:
     # State selection
     state = st.radio("Select a state of matter:", ["Solid", "Liquid", "Gas"])
 
-# Plot based on state
-plot_particles(state)
-
-# Explanation
-if state == "Solid":
-    st.markdown("**Solid:** Molecules are closely packed together, and the shape and volume are fixed.")
-elif state == "Liquid":
-    st.markdown("**Liquid:** Molecules are less tightly packed, the volume is fixed, but the shape can change.")
-else:
-    st.markdown("**Gas:** Molecules move freely, and both the shape and volume can change.")
+    # Plot based on state
+    plot_particles(state)
+    
+    # Explanation
+    if state == "Solid":
+        st.markdown("**Solid:** Molecules are closely packed together, and the shape and volume are fixed.")
+    elif state == "Liquid":
+        st.markdown("**Liquid:** Molecules are less tightly packed, the volume is fixed, but the shape can change.")
+    else:
+        st.markdown("**Gas:** Molecules move freely, and both the shape and volume can change.")
