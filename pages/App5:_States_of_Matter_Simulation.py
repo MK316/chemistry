@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-tabs = st.tabs(["Overview", "Practice with APP"])
+tabs = st.tabs(["🔎 App overview", "🐾 Practice with APP"])
 
 with tabs[0]:
     st.markdown("""
