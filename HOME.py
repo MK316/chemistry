@@ -19,11 +19,10 @@ st.markdown("1. **Molecular Structure Viewer** – Generate and visualize 3D str
 st.markdown("2. **Interactive Periodic Table** – Explore the periodic table and element properties interactively.")
 st.markdown("3. **Chemical Equation Balancer** – Automatically balance chemical reactions using algebraic methods.")
 
-# Instruction to get started
-st.write("👉 Use the navigation menu on the left to explore each tool.")
-
 # Footer
 st.caption("This platform was created to demonstrate how Streamlit can be used to build educational apps for future chemistry teachers.")
 
 # Add an image or logo (Optional)
-st.image("https://github.com/MK316/chemistry/raw/main/images/chemistry01.png", caption="Enhance Chemistry Learning with Technology", use_column_width=True)
+st.image("https://github.com/MK316/chemistry/raw/main/images/chemistry01.png", 
+         caption="Enhance Chemistry Learning with Technology", 
+         width=400)  # Adjust width value as needed
