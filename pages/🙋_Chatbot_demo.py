@@ -13,7 +13,7 @@ model_option = st.radio(
     "Select an AI model:",
     options=[
         "GPT-2 (Hugging Face)", 
-        "Talk to me"
+        "Talk to me (MK316 GPT)"
     ],
     index=0  # Default to the first option
 )
@@ -22,22 +22,9 @@ model_option = st.radio(
 if model_option == "GPT-2 (Hugging Face)":
     st.write("**GPT-2 model selected. Generating text...**")
     generator = pipeline("text-generation", model="gpt2")
-
-elif model_option == "Llama 2 (Meta, 7B)":
-    st.write("**Llama 2 model selected. Generating text...**")
-    generator = pipeline("text-generation", model="meta-llama/Llama-2-7b-hf")
-
-elif model_option == "GPT-Neo (EleutherAI, 1.3B)":
-    st.write("**GPT-Neo model selected. Generating text...**")
-    generator = pipeline("text-generation", model="EleutherAI/gpt-neo-1.3B")
-
-elif model_option == "GPT-J (EleutherAI, 6B)":
-    st.write("**GPT-J model selected. Generating text...**")
-    generator = pipeline("text-generation", model="EleutherAI/gpt-j-6B")
-
-elif model_option == "Bloom (BigScience, 1.7B)":
-    st.write("**Bloom model selected. Generating text...**")
-    generator = pipeline("text-generation", model="bigscience/bloom-1b7")
+elif model_option == "Talk to me (GPT-2)":
+    st.write("**Talk to me (GPT-2) model selected. Generating text...**")
+    generator = pipeline("text-generation", model="https://chatgpt.com/g/g-m8RLcYhOz-talktome")
 
 # Initialize session state to store conversation history
 if "messages" not in st.session_state:
