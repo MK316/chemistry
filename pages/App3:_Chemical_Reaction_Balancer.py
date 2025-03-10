@@ -7,7 +7,7 @@ with tabs[0]:
     st.markdown("""
     #### Purpose: 
     - To automatically balance chemical reactions using algebraic methods.  
-    #### Key Features:**  
+    #### Key Features: 
     - 🔢 Input unbalanced chemical equations.  
     - ✅ Display balanced reaction.  
     - 🧪 Identify reactants and products. 
