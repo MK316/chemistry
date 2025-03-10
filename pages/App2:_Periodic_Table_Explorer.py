@@ -18,3 +18,5 @@ selected_element = st.selectbox("Choose an element", df['name'])
 if selected_element:
     element_data = df[df['name'] == selected_element].iloc[0]
     st.write(element_data)
+
+st.info("Data source from https://github.com/Bowserinator/")
