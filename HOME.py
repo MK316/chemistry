@@ -13,7 +13,7 @@ st.caption(
 st.caption("This platform was created to demonstrate how Streamlit can be used to build educational apps for future chemistry teachers.")
 # Add an image or logo (Optional)
 st.image("https://github.com/MK316/chemistry/raw/main/images/chemistry01.png", 
-         caption="Enhance Chemistry Learning with Technology", 
+         caption="Enhance Chemistry Learning with Teacher-designed Applications", 
          width=400)  # Adjust width value as needed
 
 st.markdown("---")
