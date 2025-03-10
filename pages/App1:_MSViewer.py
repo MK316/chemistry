@@ -4,7 +4,7 @@ from rdkit.Chem import Draw, AllChem
 import tempfile
 import pandas as pd
 
-tabs = st.tabs(["🍐 App overview", "🍏 Practice with APP"])
+tabs = st.tabs(["🔎 App overview", "🐾 Practice with APP"])
 
 with tabs[0]:
     st.caption("Overview")
