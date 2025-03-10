@@ -13,10 +13,7 @@ model_option = st.radio(
     "Select an AI model:",
     options=[
         "GPT-2 (Hugging Face)", 
-        "Llama 2 (Meta, 7B)",
-        "GPT-Neo (EleutherAI, 1.3B)",
-        "GPT-J (EleutherAI, 6B)",
-        "Bloom (BigScience, 1.7B)"
+        "Talk to me"
     ],
     index=0  # Default to the first option
 )
