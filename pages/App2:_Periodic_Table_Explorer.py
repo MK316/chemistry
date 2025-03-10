@@ -5,7 +5,17 @@ import plotly.express as px
 tabs = st.tabs(["🔎 App overview", "🐾 Practice with APP"])
 
 with tabs[0]:
-    st.caption("Overview")
+    st.markdown("""
+    #### Purpose:
+    + Help students understand the periodic table structure and trends.
+    + Allow interactive exploration of element properties.
+    #### Key Features:
+    + Display an interactive periodic table.
+    + Allow students to click on an element to see detailed properties (atomic number, mass, electron configuration, etc.).
+    + Highlight trends (e.g., atomic size, electronegativity) using color gradients.
+
+
+    """)
 
 with tabs[1]:
   
