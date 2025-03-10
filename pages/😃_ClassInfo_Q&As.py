@@ -10,7 +10,7 @@ qa_pairs = {
 }
 
 # Streamlit app layout
-st.title("🎓 Class Info Chatbot")
+st.title("🎓 Class Info Q & As")
 
 # Dropdown for selecting a question
 selected_question = st.selectbox(
