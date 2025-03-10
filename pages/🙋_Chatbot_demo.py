@@ -6,7 +6,7 @@ st.set_page_config(page_title="Free AI Chatbot", page_icon="🤖")
 
 # Title and subtitle
 st.title("🤖 AI Chatbot")
-st.write("Ask me anything!")
+st.write("Ask me nothing! (This is just a demo. I hope you don't expect much.)")
 
 # Model selection with radio buttons
 model_option = st.radio(
