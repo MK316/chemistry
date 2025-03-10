@@ -242,7 +242,7 @@ with tabs[6]:
     )
 
     # Clear Canvas button
-    if st.button("🗑️ Clear Canvas"):
+    if st.button("🗑️ Start / Clear Canvas"):
         st.session_state["clear_canvas"] = not st.session_state["clear_canvas"]
         st.rerun()  # This forces Streamlit to reload and clear the drawing
 
