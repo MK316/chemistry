@@ -18,7 +18,7 @@ st.image("https://github.com/MK316/chemistry/raw/main/images/chemistry01.png",
 st.markdown("---")
 # Overview of available tools
 st.markdown("#### 🚀 Available Tools:")
-st.markdown("1. **Molecular Structure Viewer** – Generate and visualize 3D structures of chemical compounds using SMILES.")
+st.markdown("1. **Molecular Structure Viewer** – Generate and visualize 2D structures of chemical compounds using SMILES.")
 st.markdown("2. **Interactive Periodic Table** – Explore the periodic table and element properties interactively.")
 st.markdown("3. **Chemical Equation Balancer** – Automatically balance chemical reactions using algebraic methods.")
 st.markdown("4. **pH and Acid-Base Indicator** – To understand acids, bases, and neutral solutions based on pH levels.  ")
