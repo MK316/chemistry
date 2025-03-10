@@ -16,7 +16,6 @@ with tabs[0]:
     #### Key Features:
    - 🧪 **SMILES Input** – Allow users to input a SMILES string to generate molecular structures.
    - 🖼️ **2D Visualization** – Display a 2D structural diagram of the molecule.
-   - 🔄 **Rotation and Zoom** – Users can rotate and zoom into the molecule for detailed examination.
    - ✅ **Structure Validation** – Provide feedback if the input SMILES is invalid.
     """)
 
