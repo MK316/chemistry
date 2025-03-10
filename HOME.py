@@ -20,8 +20,8 @@ with col1:
 
 with col2:
     st.image("https://github.com/MK316/chemistry/raw/main/images/chemi25.png", 
-             caption="GNU Chemistry Edu Workshop 2025", 
-             width=200)  # Adjust width value as needed
+             caption="GNU ChemEdu Workshop 2025", 
+             width=150)  # Adjust width value as needed
 
 
 st.markdown("---")
