@@ -15,4 +15,4 @@ streamlit-drawable-canvas
 transformers
 torch
 soundfile
-py3Dmol
+sympy
