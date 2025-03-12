@@ -181,48 +181,26 @@ questions = [
      "answer": "Oxygen"}
 ]
 
-def initialize_session_state():
-    # Set default values for session state if not already present
-    if 'questions' not in st.session_state:
-        shuffled_questions = questions[:]  # Make a copy of the questions list
-        random.shuffle(shuffled_questions)  # Shuffle the copy
-        st.session_state.questions = shuffled_questions
-        st.session_state.current_index = 0
-    if 'check_answer' not in st.session_state:
-        st.session_state.check_answer = False
-
 def quiz_app():
-    initialize_session_state()
     st.title('Chemistry Basics Quiz')
+    
+    # Dropdown to select the question
+    question_titles = [q["question"] for q in questions]  # Extracting questions for the dropdown
+    selected_question = st.selectbox("Select a question:", question_titles)
 
-    if st.session_state.questions:
-        # Retrieve current question based on index
-        current_question = st.session_state.questions[st.session_state.current_index]
-        question_text = current_question["question"]
-        options = current_question["options"]
-        correct_answer = current_question["answer"]
-        
-        # Display question and options
-        st.subheader(question_text)
-        user_answer = st.radio("Choose an answer:", options, key=f"answer-{st.session_state.current_index}")
+    # Find the selected question in the list
+    question = next((q for q in questions if q["question"] == selected_question), None)
+    
+    if question:
+        # Display the options as radio buttons
+        user_answer = st.radio("Choose an answer:", question["options"], key="answer")
 
+        # Button to check the answer
         if st.button("Check answer"):
-            st.session_state.check_answer = True  # Set flag to true to indicate answer should be checked
-
-        if st.session_state.check_answer:
-            if user_answer == correct_answer:
+            if user_answer == question["answer"]:
                 st.success("Correct! 🎉")
             else:
-                st.error(f"Wrong! The correct answer is {correct_answer}.")
-            st.session_state.check_answer = False  # Reset flag
-
-        if st.button("Next Question"):
-            st.session_state.current_index = (st.session_state.current_index + 1) % len(st.session_state.questions)
-            # Reset the check answer flag when moving to next question
-            st.session_state.check_answer = False
-    else:
-        st.error("No questions are available.")
-
+                st.error(f"Wrong! The correct answer is {question['answer']}.")
 with tab3:
     quiz_app()
     
