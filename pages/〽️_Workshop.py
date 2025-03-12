@@ -182,11 +182,9 @@ questions = [
 ]
 
 def setup_questions():
-    # Check if 'questions' is initialized in session state and if not, shuffle and set it
     if 'questions' not in st.session_state:
-        # Ensure the global questions list is used and shuffled
         shuffled_questions = questions[:]  # Make a copy of the questions list
-        random.shuffle(shuffled_questions)  # Shuffle the copied list
+        random.shuffle(shuffled_questions)  # Shuffle the copy
         st.session_state.questions = shuffled_questions
         st.session_state.current_index = 0
 
@@ -195,27 +193,30 @@ def quiz_app():
     st.title('Chemistry Basics Quiz')
 
     if 'questions' in st.session_state and st.session_state.questions:
+        # Retrieve current question based on index
         current_question = st.session_state.questions[st.session_state.current_index]
         question_text = current_question["question"]
         options = current_question["options"]
         correct_answer = current_question["answer"]
         
+        # Display question and options
         st.subheader(question_text)
-        user_answer = st.radio("Choose an answer:", options, key=f"question-{st.session_state.current_index}")
+        # Use a stable key for radio that combines index with some unique but stable prefix
+        user_answer = st.radio("Choose an answer:", options, key=f"answer-{st.session_state.current_index}")
 
-        if st.button("Check answer"):
+        # Check answer button
+        if st.button("Check answer", key=f"check-{st.session_state.current_index}"):
             if user_answer == correct_answer:
                 st.success("Correct! 🎉")
             else:
                 st.error(f"Wrong! The correct answer is {correct_answer}.")
 
+        # Button for moving to next question
         if st.button("Next Question"):
-            if st.session_state.current_index < len(st.session_state.questions) - 1:
-                st.session_state.current_index += 1
-            else:
-                st.session_state.current_index = 0  # Optionally, loop back to the first question
+            # Increment the question index, loop back if at the end
+            st.session_state.current_index = (st.session_state.current_index + 1) % len(st.session_state.questions)
     else:
-        st.error("No questions are currently available.")
+        st.error("No questions are available.")
 
 with tab3:
     quiz_app()
