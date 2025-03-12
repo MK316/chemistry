@@ -187,6 +187,7 @@ def setup_questions():
         random.shuffle(shuffled_questions)  # Shuffle the copy
         st.session_state.questions = shuffled_questions
         st.session_state.current_index = 0
+        st.session_state.check_answer = False
 
 def quiz_app():
     setup_questions()
@@ -201,20 +202,22 @@ def quiz_app():
         
         # Display question and options
         st.subheader(question_text)
-        # Use a stable key for radio that combines index with some unique but stable prefix
         user_answer = st.radio("Choose an answer:", options, key=f"answer-{st.session_state.current_index}")
 
-        # Check answer button
-        if st.button("Check answer", key=f"check-{st.session_state.current_index}"):
+        if st.button("Check answer"):
+            st.session_state.check_answer = True  # Set flag to true to indicate answer should be checked
+
+        if st.session_state.check_answer:
             if user_answer == correct_answer:
                 st.success("Correct! 🎉")
             else:
                 st.error(f"Wrong! The correct answer is {correct_answer}.")
+            st.session_state.check_answer = False  # Reset flag
 
-        # Button for moving to next question
         if st.button("Next Question"):
-            # Increment the question index, loop back if at the end
             st.session_state.current_index = (st.session_state.current_index + 1) % len(st.session_state.questions)
+            # Reset the check answer flag when moving to next question
+            st.session_state.check_answer = False
     else:
         st.error("No questions are available.")
 
