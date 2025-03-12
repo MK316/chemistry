@@ -14,3 +14,4 @@ gtts
 streamlit-drawable-canvas
 transformers
 torch
+soundfile
