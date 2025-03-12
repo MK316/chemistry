@@ -1,12 +1,10 @@
-streamlit==1.30.0
-rdkit==2023.09.4
-py3Dmol==2.0.1
-plotly==5.18.0
-pandas==2.2.0
-sympy==1.12
-numpy==1.26.4
+streamlit
+rdkit
+plotly
+pandas
+sympy
+numpy
 matplotlib
-py3Dmol
 pillow
 qrcode
 wordcloud
@@ -15,5 +13,3 @@ streamlit-drawable-canvas
 transformers
 torch
 soundfile
-
-sympy==1.10.1
