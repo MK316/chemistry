@@ -181,19 +181,21 @@ questions = [
      "answer": "Oxygen"}
 ]
 
-def setup_questions():
+def initialize_session_state():
+    # Set default values for session state if not already present
     if 'questions' not in st.session_state:
         shuffled_questions = questions[:]  # Make a copy of the questions list
         random.shuffle(shuffled_questions)  # Shuffle the copy
         st.session_state.questions = shuffled_questions
         st.session_state.current_index = 0
+    if 'check_answer' not in st.session_state:
         st.session_state.check_answer = False
 
 def quiz_app():
-    setup_questions()
+    initialize_session_state()
     st.title('Chemistry Basics Quiz')
 
-    if 'questions' in st.session_state and st.session_state.questions:
+    if st.session_state.questions:
         # Retrieve current question based on index
         current_question = st.session_state.questions[st.session_state.current_index]
         question_text = current_question["question"]
