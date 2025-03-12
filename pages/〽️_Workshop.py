@@ -183,27 +183,39 @@ questions = {
         "answer": "Oxygen"
     }
 }
+def setup_questions():
+    if 'questions' not in st.session_state or 'current_index' not in st.session_state:
+        random.shuffle(questions)  # Shuffle the list of questions
+        st.session_state.questions = questions
+        st.session_state.current_index = 0  # Start with the first question
 
 def quiz_app():
+    setup_questions()  # Setup and shuffle questions
     st.title('Chemistry Basics Quiz')
 
-    for index, (question, details) in enumerate(questions.items()):
-        st.subheader(question)
-        options = details["options"]
-        correct_answer = details["answer"]
-        
-        # Generate a unique key for each question
-        question_key = f"Question-{index}"
+    # Get current question
+    current_question = st.session_state.questions[st.session_state.current_index]
+    question_text = current_question["question"]
+    options = current_question["options"]
+    correct_answer = current_question["answer"]
+    
+    st.subheader(question_text)
+    user_answer = st.radio("Choose an answer:", options, key=f"question-{st.session_state.current_index}")
 
-        # Radio buttons for options with a unique key
-        user_answer = st.radio("Choose an answer:", options, key=question_key)
-        
-        # Button to check answer with a unique key
-        if st.button("Check answer", key=f"btn-{question_key}"):
-            if user_answer == correct_answer:
-                st.success("Correct! 🎉")
-            else:
-                st.error(f"Wrong! The correct answer is {correct_answer}.")
+    # Button to check answer
+    if st.button("Check answer"):
+        if user_answer == correct_answer:
+            st.success("Correct! 🎉")
+        else:
+            st.error(f"Wrong! The correct answer is {correct_answer}.")
+
+    # Button to go to the next question
+    if st.button("Next Question"):
+        if st.session_state.current_index < len(st.session_state.questions) - 1:
+            st.session_state.current_index += 1
+        else:
+            st.session_state.current_index = 0  # Loop back to the first question or end the quiz
+
 with tab3:
     quiz_app()
 
