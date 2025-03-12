@@ -1,9 +1,0 @@
-name: mychemapp
-channels:
-  - conda-forge
-dependencies:
-  - python=3.8  # or any specific Python version you need
-  - rdkit
-  - pip:
-      - streamlit
-      - py3Dmol
