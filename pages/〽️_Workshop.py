@@ -167,7 +167,6 @@ with tab2:
 
 #################################################
 
-import streamlit as st
 
 # Sample chemistry questions
 questions = {
@@ -188,21 +187,23 @@ questions = {
 def quiz_app():
     st.title('Chemistry Basics Quiz')
 
-    for question, details in questions.items():
+    for index, (question, details) in enumerate(questions.items()):
         st.subheader(question)
         options = details["options"]
         correct_answer = details["answer"]
         
-        # Radio buttons for options
-        user_answer = st.radio("Choose an answer:", options, key=question)
+        # Generate a unique key for each question
+        question_key = f"Question-{index}"
+
+        # Radio buttons for options with a unique key
+        user_answer = st.radio("Choose an answer:", options, key=question_key)
         
-        # Button to check answer
-        if st.button("Check answer", key=question):
+        # Button to check answer with a unique key
+        if st.button("Check answer", key=f"btn-{question_key}"):
             if user_answer == correct_answer:
                 st.success("Correct! 🎉")
             else:
                 st.error(f"Wrong! The correct answer is {correct_answer}.")
-
 with tab3:
     quiz_app()
 
