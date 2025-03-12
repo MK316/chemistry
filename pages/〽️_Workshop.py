@@ -182,7 +182,7 @@ questions = [
 ]
 
 def quiz_app():
-    st.title('Chemistry Basics Quiz')
+    st.title('💦 Chemistry Basics Quiz')
     
     # Dropdown to select the question
     question_titles = [q["question"] for q in questions]  # Extracting questions for the dropdown
