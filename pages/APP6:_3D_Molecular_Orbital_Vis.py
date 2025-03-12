@@ -1,23 +1,38 @@
 import streamlit as st
-import py3Dmol
+from rdkit import Chem
+from rdkit.Chem import AllChem
+import json
 
-def show_molecule(mol_id):
-    xyzview = py3Dmol.view(query='cid:{}'.format(mol_id))
-    xyzview.setStyle({'stick': {}})
-    xyzview.zoomTo()
-    return xyzview.show()
+def generate_3d_coordinates(smiles):
+    mol = Chem.MolFromSmiles(smiles)
+    mol = Chem.AddHs(mol)
+    AllChem.EmbedMolecule(mol, AllChem.ETKDG())
+    return Chem.MolToMolBlock(mol)
+
+def create_viewer(mol_block):
+    viewer_html = f"""
+    <div id="molView" style="height: 400px; width: 600px;"></div>
+    <script src="https://3Dmol.org/build/3Dmol.js"></script>
+    <script>
+    let viewer = new $3Dmol.createViewer(document.getElementById('molView'), {{
+        backgroundColor: 'white'
+    }});
+    viewer.addModel(`{mol_block}`, 'sdf');
+    viewer.setStyle({{}}, {{stick: {{}}}});
+    viewer.zoomTo();
+    viewer.render();
+    </script>
+    """
+    return viewer_html
 
 def main():
-    st.title('3D Molecular Orbital Viewer')
-    st.write("This app demonstrates the 3D structure of molecules. Enter a PubChem compound ID to view its molecular structure.")
-    
-    # User input for the molecule's PubChem CID
-    mol_id = st.text_input("Enter PubChem CID:", "1234")  # Example CID for butane
+    st.title('3D Molecule Viewer')
+    smiles_input = st.text_input("Enter a SMILES string:", "CCO")  # Example for ethanol
 
-    # Button to show the molecule
-    if st.button('Show Molecule'):
-        st.write("Rendering 3D model for CID: {}".format(mol_id))
-        show_molecule(mol_id)
+    if st.button("Visualize Molecule"):
+        mol_block = generate_3d_coordinates(smiles_input)
+        viewer_html = create_viewer(mol_block)
+        st.components.v1.html(viewer_html, height=420)
 
 if __name__ == "__main__":
     main()
