@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D Molecule Viewer</title>
+    <script src="https://3Dmol.org/build/3Dmol.js"></script>
+</head>
+<body>
+    <h1>3D Molecule Viewer</h1>
+    <div id="molView" style="width: 800px; height: 400px;"></div>
+    <script>
+        let viewer = new $3Dmol.createViewer('molView', {backgroundColor: 'white'});
+        // Add a sample molecule; you can replace this with user input or other mechanisms
+        viewer.addModel('CCO', 'smiles');
+        viewer.setStyle({}, {stick: {}});
+        viewer.zoomTo();
+        viewer.render();
+    </script>
+</body>
+</html>
