@@ -168,56 +168,58 @@ with tab2:
 #################################################
 
 
-# Sample chemistry questions
-questions = {
-    "What is the chemical formula for water?": {
-        "options": ["H2O", "H2O2", "CO2", "O2"],
-        "answer": "H2O"
-    },
-    "What is the pH of pure water at 25°C?": {
-        "options": ["7", "3", "5", "8"],
-        "answer": "7"
-    },
-    "Which element has the chemical symbol 'O'?": {
-        "options": ["Gold", "Oxygen", "Silver", "Iron"],
-        "answer": "Oxygen"
-    }
-}
+# Sample chemistry questions defined outside of any session-state-dependent function
+questions = [
+    {"question": "What is the chemical formula for water?",
+     "options": ["H2O", "H2O2", "CO2", "O2"],
+     "answer": "H2O"},
+    {"question": "What is the pH of pure water at 25°C?",
+     "options": ["7", "3", "5", "8"],
+     "answer": "7"},
+    {"question": "Which element has the chemical symbol 'O'?",
+     "options": ["Gold", "Oxygen", "Silver", "Iron"],
+     "answer": "Oxygen"}
+]
 
 def setup_questions():
-    if 'questions' not in st.session_state or 'current_index' not in st.session_state:
-        random.shuffle(questions)  # Shuffle the list of questions
-        st.session_state.questions = questions
-        st.session_state.current_index = 0  # Start with the first question
+    # Check if 'questions' is initialized in session state and if not, shuffle and set it
+    if 'questions' not in st.session_state:
+        # Ensure the global questions list is used and shuffled
+        shuffled_questions = questions[:]  # Make a copy of the questions list
+        random.shuffle(shuffled_questions)  # Shuffle the copied list
+        st.session_state.questions = shuffled_questions
+        st.session_state.current_index = 0
 
 def quiz_app():
     setup_questions()
     st.title('Chemistry Basics Quiz')
 
-    # Retrieve the current question based on the index
-    current_question = st.session_state.questions[st.session_state.current_index]
-    question_text = current_question["question"]
-    options = current_question["options"]
-    correct_answer = current_question["answer"]
-    
-    st.subheader(question_text)
-    user_answer = st.radio("Choose an answer:", options, key=f"question-{st.session_state.current_index}")
+    if 'questions' in st.session_state and st.session_state.questions:
+        current_question = st.session_state.questions[st.session_state.current_index]
+        question_text = current_question["question"]
+        options = current_question["options"]
+        correct_answer = current_question["answer"]
+        
+        st.subheader(question_text)
+        user_answer = st.radio("Choose an answer:", options, key=f"question-{st.session_state.current_index}")
 
-    if st.button("Check answer"):
-        if user_answer == correct_answer:
-            st.success("Correct! 🎉")
-        else:
-            st.error(f"Wrong! The correct answer is {correct_answer}.")
+        if st.button("Check answer"):
+            if user_answer == correct_answer:
+                st.success("Correct! 🎉")
+            else:
+                st.error(f"Wrong! The correct answer is {correct_answer}.")
 
-    if st.button("Next Question"):
-        if st.session_state.current_index < len(st.session_state.questions) - 1:
-            st.session_state.current_index += 1
-        else:
-            st.session_state.current_index = 0  # Loop back to the first question or show a completion message
-
+        if st.button("Next Question"):
+            if st.session_state.current_index < len(st.session_state.questions) - 1:
+                st.session_state.current_index += 1
+            else:
+                st.session_state.current_index = 0  # Optionally, loop back to the first question
+    else:
+        st.error("No questions are currently available.")
 
 with tab3:
     quiz_app()
+    
 
 #########################
 
