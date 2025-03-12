@@ -174,7 +174,7 @@ questions = [
      "options": ["H2O", "H2O2", "CO2", "O2"],
      "answer": "H2O"},
     {"question": "What is the pH of pure water at 25°C?",
-     "options": ["7", "3", "5", "8"],
+     "options": ["3", "5", "7", "8"],
      "answer": "7"},
     {"question": "Which element has the chemical symbol 'O'?",
      "options": ["Gold", "Oxygen", "Silver", "Iron"],
