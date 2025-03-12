@@ -183,6 +183,7 @@ questions = {
         "answer": "Oxygen"
     }
 }
+
 def setup_questions():
     if 'questions' not in st.session_state or 'current_index' not in st.session_state:
         random.shuffle(questions)  # Shuffle the list of questions
@@ -190,10 +191,10 @@ def setup_questions():
         st.session_state.current_index = 0  # Start with the first question
 
 def quiz_app():
-    setup_questions()  # Setup and shuffle questions
+    setup_questions()
     st.title('Chemistry Basics Quiz')
 
-    # Get current question
+    # Retrieve the current question based on the index
     current_question = st.session_state.questions[st.session_state.current_index]
     question_text = current_question["question"]
     options = current_question["options"]
@@ -202,19 +203,18 @@ def quiz_app():
     st.subheader(question_text)
     user_answer = st.radio("Choose an answer:", options, key=f"question-{st.session_state.current_index}")
 
-    # Button to check answer
     if st.button("Check answer"):
         if user_answer == correct_answer:
             st.success("Correct! 🎉")
         else:
             st.error(f"Wrong! The correct answer is {correct_answer}.")
 
-    # Button to go to the next question
     if st.button("Next Question"):
         if st.session_state.current_index < len(st.session_state.questions) - 1:
             st.session_state.current_index += 1
         else:
-            st.session_state.current_index = 0  # Loop back to the first question or end the quiz
+            st.session_state.current_index = 0  # Loop back to the first question or show a completion message
+
 
 with tab3:
     quiz_app()
