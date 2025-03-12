@@ -15,4 +15,5 @@ streamlit-drawable-canvas
 transformers
 torch
 soundfile
-sympy
+
+sympy==1.10.1
