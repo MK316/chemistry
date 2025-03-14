@@ -94,7 +94,7 @@ with tab1:
 
 ########################
 with tab2:
-    st.markdown("#### 💻 Useful Platforms for Coding and Application Design")
+    st.markdown("### 💻 Useful Platforms for Coding and Application Design")
 
     st.write("""
     Here are some key platforms useful for education and coding-based application designs:
@@ -103,40 +103,40 @@ with tab2:
     platforms = {
         "Python": {
             "link": "https://www.python.org/",
-            "description": "Python is a versatile programming language widely used in education and app development due to its readability and vast library support."
+            "description": "Python is a versatile programming language widely used in education and app development due to its readability and vast library support. (Python은 읽기 쉽고 광범위한 라이브러리를 지원하여 교육 및 앱 개발에 널리 사용되는 다용도 프로그래밍 언어입니다.)"
         },
         "Colab": {
             "link": "https://colab.research.google.com/",
-            "description": "Google Colab allows users to write and execute Python code in a browser, supporting collaboration and GPU access for deep learning tasks."
+            "description": "Google Colab allows users to write and execute Python code in a browser, supporting collaboration and GPU access for deep learning tasks. (Google Colab은 브라우저에서 Python 코드를 작성하고 실행할 수 있도록 하며, 딥러닝 작업을 위한 협업 및 GPU 접근을 지원합니다.)"
         },
         "GitHub": {
             "link": "https://github.com/",
-            "description": "GitHub is a code hosting platform for version control and collaboration, allowing teams to work together on projects."
+            "description": "GitHub is a code hosting platform for version control and collaboration, allowing teams to work together on projects. (GitHub은 버전 관리 및 협업을 위한 코드 호스팅 플랫폼으로, 팀이 프로젝트에서 협력할 수 있도록 합니다.)"
         },
         "Streamlit": {
             "link": "https://streamlit.io/",
-            "description": "Streamlit is an open-source Python framework for building and sharing data-based web applications quickly."
+            "description": "Streamlit is an open-source Python framework for building and sharing data-based web applications quickly. (Streamlit은 데이터 기반 웹 애플리케이션을 빠르게 구축하고 공유할 수 있는 오픈소스 Python 프레임워크입니다.)"
         },
         "Gradio": {
             "link": "https://gradio.app/",
-            "description": "Gradio allows developers to create customizable user interfaces for machine learning models and applications."
+            "description": "Gradio allows developers to create customizable user interfaces for machine learning models and applications. (Gradio는 개발자가 머신러닝 모델 및 애플리케이션을 위한 사용자 인터페이스를 쉽게 만들 수 있도록 합니다.)"
         },
         "Huggingface": {
             "link": "https://huggingface.co/",
-            "description": "Hugging Face is a leader in natural language processing (NLP) and machine learning model hosting and sharing."
+            "description": "Hugging Face is a leader in natural language processing (NLP) and machine learning model hosting and sharing. (Hugging Face는 자연어 처리(NLP) 및 머신러닝 모델 호스팅 및 공유 분야의 선두 주자입니다.)"
         },
         "ChatGPT": {
             "link": "https://chat.openai.com/",
-            "description": "ChatGPT is a conversational AI model from OpenAI, widely used for language-based learning and automation."
+            "description": "ChatGPT is a conversational AI model from OpenAI, widely used for language-based learning and automation. (ChatGPT는 OpenAI의 대화형 AI 모델로, 언어 기반 학습 및 자동화에 널리 사용됩니다.)"
         },
         "DeepSeek": {
             "link": "https://www.deepseek.com/",
-            "description": "DeepSeek is a platform for deep learning research and model deployment, useful for AI-based applications."
+            "description": "DeepSeek is a platform for deep learning research and model deployment, useful for AI-based applications. (DeepSeek는 딥러닝 연구 및 모델 배포를 위한 플랫폼으로, AI 기반 애플리케이션에 유용합니다.)"
         }
     }
 
     for platform, info in platforms.items():
-        st.markdown(f"**[{platform}]({info['link']})** — {info['description']}")
+        st.markdown(f"🌱 **[{platform}]({info['link']})** — {info['description']}")
 
     
 
