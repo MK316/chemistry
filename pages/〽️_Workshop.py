@@ -8,7 +8,7 @@ import os
 from PIL import Image
 import soundfile as sf
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["📖 Lecture slides", "Web links", "🌀App2: Complex waves", "💦 Quiz", "🌀 Videos"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["📖 Lecture slides", "🌱 Web links", "🌀App sample: Complex waves", "💦 Quiz", "🌀 Videos"])
 
 # CSS to adjust the alignment of the dropdown to match the buttons
 st.markdown("""
