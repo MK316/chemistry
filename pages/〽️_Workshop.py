@@ -89,8 +89,11 @@ with tab1:
     display_image()
 
     st.markdown("---")
-    st.caption("Introduction: Slides 1~8")
-    st.caption("Chapter 01: Slides 9~52")
+    st.write("Workshop hosted by Chemistry Education (7-10 PM; 2025. 3. 14), Prepared by MK316")
+    st.caption("Part 1: Slides 3~6")
+    st.caption("Part 2: Slides 7~15")
+    st.caption("Part 3: Slides 16~20")
+
 
 ########################
 with tab2:
