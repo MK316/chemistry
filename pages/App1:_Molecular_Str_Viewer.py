@@ -5,6 +5,17 @@ import py3Dmol
 import pandas as pd
 import tempfile
 
+# Initialize session state variables if not already set
+if 'reset' not in st.session_state:
+    st.session_state['reset'] = False
+if 'smiles' not in st.session_state:
+    st.session_state['smiles'] = ""
+
+# Function to clear input and reset images
+def reset_form():
+    st.session_state.smiles = ""
+    st.session_state.reset = True
+
 # Create tabs
 tabs = st.tabs(["🔎 App overview", "🐾 Practice with APP"])
 
@@ -12,18 +23,22 @@ with tabs[0]:
     st.markdown("""
     #### Purpose:
     + To generate and visualize the 2D and 3D structures of chemical compounds using SMILES notation.  
-   
+
     #### Key Features:
-   - 🧪 **SMILES Input** – Allow users to input a SMILES string to generate molecular structures.
-   - 🖼️ **2D Visualization** – Display a 2D structural diagram of the molecule.
-   - ✅ **Structure Validation** – Provide feedback if the input SMILES is invalid.
+    - 🧪 **SMILES Input** – Allow users to input a SMILES string to generate molecular structures.
+    - 🖼️ **2D Visualization** – Display a 2D structural diagram of the molecule.
+    - ✅ **Structure Validation** – Provide feedback if the input SMILES is invalid.
     """)
 
 with tabs[1]:
-    # Get SMILES input from user
-    smiles = st.text_input("Enter a SMILES string:")
+    col1, col2 = st.columns([1, 4])
+    with col1:
+        st.button("Reset", on_click=reset_form)
+    with col2:
+        st.session_state.smiles = st.text_input("Enter a SMILES string:", key="smiles", value=st.session_state.smiles)
 
-    if smiles:
+    smiles = st.session_state.smiles
+    if smiles and not st.session_state.reset:
         mol = Chem.MolFromSmiles(smiles)
         if mol:
             # Generate 2D coordinates for visualization
@@ -73,9 +88,10 @@ with tabs[1]:
                 html_content = file.read()
 
             st.components.v1.html(html_content, height=400, width=400)
-
         else:
             st.error("Invalid SMILES string. Please try again.")
+    elif st.session_state.reset:
+        st.session_state.reset = False
 
     # Test Cases Table
     test_cases = {
@@ -98,21 +114,5 @@ with tabs[1]:
     }
 
     st.markdown("### 🧪 Test Cases")
-
-    # Convert to pandas DataFrame
     df = pd.DataFrame(test_cases)
-
-    # Display table with clickable SMILES strings for copying
-    for i, row in df.iterrows():
-        col1, col2 = st.columns([3, 2])
-        with col1:
-            st.markdown(
-                f"""
-                <p style="cursor: pointer;" onclick="navigator.clipboard.writeText('{row['SMILES String']}'); alert('Copied: {row['SMILES String']}')">
-                {row['SMILES String']}
-                </p>
-                """,
-                unsafe_allow_html=True
-            )
-        with col2:
-            st.write(row["Molecule"])
+    st.dataframe(df)
