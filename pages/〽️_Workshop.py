@@ -8,7 +8,7 @@ import os
 from PIL import Image
 import soundfile as sf
 
-tab1, tab2, tab3, tab4 = st.tabs(["📖 Lecture slides", "🌀App2: Complex waves", "💦 Quiz", "🌀 Videos"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["📖 Lecture slides", "Web links", "🌀App2: Complex waves", "💦 Quiz", "🌀 Videos"])
 
 # CSS to adjust the alignment of the dropdown to match the buttons
 st.markdown("""
@@ -92,7 +92,56 @@ with tab1:
     st.caption("Introduction: Slides 1~8")
     st.caption("Chapter 01: Slides 9~52")
 
+########################
 with tab2:
+    st.markdown("#### 💻 Useful Platforms for Coding and Application Design")
+
+    st.write("""
+    Here are some key platforms useful for education and coding-based application designs:
+    """)
+
+    platforms = {
+        "Python": {
+            "link": "https://www.python.org/",
+            "description": "Python is a versatile programming language widely used in education and app development due to its readability and vast library support."
+        },
+        "Colab": {
+            "link": "https://colab.research.google.com/",
+            "description": "Google Colab allows users to write and execute Python code in a browser, supporting collaboration and GPU access for deep learning tasks."
+        },
+        "GitHub": {
+            "link": "https://github.com/",
+            "description": "GitHub is a code hosting platform for version control and collaboration, allowing teams to work together on projects."
+        },
+        "Streamlit": {
+            "link": "https://streamlit.io/",
+            "description": "Streamlit is an open-source Python framework for building and sharing data-based web applications quickly."
+        },
+        "Gradio": {
+            "link": "https://gradio.app/",
+            "description": "Gradio allows developers to create customizable user interfaces for machine learning models and applications."
+        },
+        "Huggingface": {
+            "link": "https://huggingface.co/",
+            "description": "Hugging Face is a leader in natural language processing (NLP) and machine learning model hosting and sharing."
+        },
+        "ChatGPT": {
+            "link": "https://chat.openai.com/",
+            "description": "ChatGPT is a conversational AI model from OpenAI, widely used for language-based learning and automation."
+        },
+        "DeepSeek": {
+            "link": "https://www.deepseek.com/",
+            "description": "DeepSeek is a platform for deep learning research and model deployment, useful for AI-based applications."
+        }
+    }
+
+    for platform, info in platforms.items():
+        st.markdown(f"**[{platform}]({info['link']})** — {info['description']}")
+
+    
+
+########################
+with tab3:
     st.markdown("### 🎶 Create a Complex Wave")
 
     # User selects number of sine wave components
@@ -201,13 +250,13 @@ def quiz_app():
                 st.success("Correct! 🎉")
             else:
                 st.error(f"Wrong! The correct answer is {question['answer']}.")
-with tab3:
+with tab4:
     quiz_app()
     
 
 #########################
 
-with tab4:
+with tab5:
 
     video_url = "https://www.youtube.com/embed/XLfQpv2ZRPU?si=5zKkYufSdvLbsCp3"
 
