@@ -18,7 +18,7 @@ with tabs[0]:
     """)
 
 with tabs[1]:
-  
+    st.markdown("#### 🌀 Periodic Table")
     # Load periodic table data
     df = pd.read_csv('https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableCSV.csv')
     
