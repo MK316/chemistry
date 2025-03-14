@@ -20,6 +20,8 @@ with tabs[0]:
     """)
 
 with tabs[1]:
+    st.markdown("#### 🌀 Molecular Structure using SMILES")
+    st.caption("SMILES: Simplified Molecular Input Line Entry System ")
     # Get SMILES input from user
     smiles = st.text_input("Enter a SMILES string:")
 
