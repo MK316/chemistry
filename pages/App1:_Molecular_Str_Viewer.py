@@ -96,28 +96,23 @@ with tabs[1]:
             "Taxol"
         ]
     }
-    
+
     st.markdown("### 🧪 Test Cases")
 
     # Convert to pandas DataFrame
     df = pd.DataFrame(test_cases)
 
-    # Display table with copy button
+    # Display table with clickable SMILES strings for copying
     for i, row in df.iterrows():
-        col1, col2, col3 = st.columns([3, 2, 1])
+        col1, col2 = st.columns([3, 2])
         with col1:
-            st.write(row["SMILES String"])
-        with col2:
-            st.write(row["Molecule"])
-        with col3:
-            # Create a copy button using JavaScript
             st.markdown(
                 f"""
-                <button onclick="navigator.clipboard.writeText('{row['SMILES String']}');
-                alert('Copied: {row['SMILES String']}')"
-                style="background-color:#4CAF50; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;">
-                📋 Copy
-                </button>
+                <p style="cursor: pointer;" onclick="navigator.clipboard.writeText('{row['SMILES String']}'); alert('Copied: {row['SMILES String']}')">
+                {row['SMILES String']}
+                </p>
                 """,
                 unsafe_allow_html=True
             )
+        with col2:
+            st.write(row["Molecule"])
