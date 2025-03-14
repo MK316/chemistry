@@ -58,19 +58,7 @@ with tabs[1]:
 
         st.markdown("### 🧪 Test Cases")
         df = pd.DataFrame(test_cases)
-        for i, row in df.iterrows():
-            col1, col2 = st.columns([3, 2])
-            with col1:
-                st.markdown(
-                    f"""
-                    <p style="cursor: pointer;" onclick="navigator.clipboard.writeText('{row['SMILES String']}'); alert('Copied: {row['SMILES String']}')">
-                    {row['SMILES String']}
-                    </p>
-                    """,
-                    unsafe_allow_html=True
-                )
-            with col2:
-                st.write(row["Molecule"])
+        st.dataframe(df)  # This will display the DataFrame with column names
 
 # This section is outside of col_left and col_right to ensure it spans the full width if needed
 if smiles:
