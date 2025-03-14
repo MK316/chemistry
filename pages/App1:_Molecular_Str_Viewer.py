@@ -4,7 +4,6 @@ from rdkit.Chem import Draw, AllChem
 import py3Dmol
 import pandas as pd
 import tempfile
-import pyperclip
 
 # Create tabs
 tabs = st.tabs(["🔎 App overview", "🐾 Practice with APP"])
@@ -38,10 +37,16 @@ with tabs[1]:
 
             with col2:
                 molecule_name = None
-                for i, row in enumerate(["C", "CCO", "CC(=O)OC1=CC=CC=C1C(=O)O", "C1=CC=CC=C1", 
-                                         "CC(C)Cc1ccc(cc1)C(C)C(=O)O", "CC1=C2C(=CC=C1)C3C(OC2C4C3(OC(=O)C4=C)C5=C6C(=C7C(=C5)OCO7)C(=O)O6)OC(=O)CCO"]):
+                for i, row in enumerate([
+                    "C", "CCO", "CC(=O)OC1=CC=CC=C1C(=O)O", 
+                    "C1=CC=CC=C1", "CC(C)Cc1ccc(cc1)C(C)C(=O)O", 
+                    "CC1=C2C(=CC=C1)C3C(OC2C4C3(OC(=O)C4=C)C5=C6C(=C7C(=C5)OCO7)C(=O)O6)OC(=O)CCO"
+                ]):
                     if smiles == row:
-                        molecule_name = ["Methane", "Ethanol", "Aspirin", "Benzene", "Ibuprofen", "Taxol"][i]
+                        molecule_name = [
+                            "Methane", "Ethanol", "Aspirin", 
+                            "Benzene", "Ibuprofen", "Taxol"
+                        ][i]
                         break
                 if molecule_name:
                     st.markdown(f"<h2 style='color:#4CAF50; font-size: 28px;'>{molecule_name}</h2>", unsafe_allow_html=True)
@@ -97,7 +102,7 @@ with tabs[1]:
     # Convert to pandas DataFrame
     df = pd.DataFrame(test_cases)
 
-    # Display table with copy icon
+    # Display table with copy button
     for i, row in df.iterrows():
         col1, col2, col3 = st.columns([3, 2, 1])
         with col1:
@@ -105,9 +110,14 @@ with tabs[1]:
         with col2:
             st.write(row["Molecule"])
         with col3:
-            # Add a copy button
-            if st.button(f"📋 Copy {i}", key=f"copy_{i}"):
-                pyperclip.copy(row["SMILES String"])
-                st.success(f"Copied: `{row['SMILES String']}`")
-
-
+            # Create a copy button using JavaScript
+            st.markdown(
+                f"""
+                <button onclick="navigator.clipboard.writeText('{row['SMILES String']}');
+                alert('Copied: {row['SMILES String']}')"
+                style="background-color:#4CAF50; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;">
+                📋 Copy
+                </button>
+                """,
+                unsafe_allow_html=True
+            )
