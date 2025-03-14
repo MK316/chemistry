@@ -110,20 +110,4 @@ with tabs[1]:
                 pyperclip.copy(row["SMILES String"])
                 st.success(f"Copied: `{row['SMILES String']}`")
 
----
 
-### ✅ **Changes Made:**
-1. Used `st.columns()` to align the SMILES string, molecule name, and copy button.
-2. Added a `pyperclip.copy()` function to copy the SMILES string to the clipboard.
-3. Improved styling of the table for better readability.
-
----
-
-### 🚀 **How It Works:**
-- Clicking the "📋 Copy" button next to any row will copy the SMILES string to the clipboard.
-- A success message will confirm the action.
-
----
-
-### 💡 **Next Step:**  
-Would you like to adjust the size of the copy button or modify the layout further? 😎
