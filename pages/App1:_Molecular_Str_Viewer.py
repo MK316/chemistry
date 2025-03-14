@@ -4,6 +4,7 @@ from rdkit.Chem import Draw, AllChem
 import py3Dmol
 import pandas as pd
 import tempfile
+import pyperclip
 
 # Create tabs
 tabs = st.tabs(["🔎 App overview", "🐾 Practice with APP"])
@@ -28,7 +29,24 @@ with tabs[1]:
         if mol:
             # Generate 2D coordinates for visualization
             AllChem.Compute2DCoords(mol)
-            st.image(Draw.MolToImage(mol), caption="2D Structure")
+
+            # Create two columns to display image and name side-by-side
+            col1, col2 = st.columns([1, 1])
+
+            with col1:
+                st.image(Draw.MolToImage(mol), caption="2D Structure")
+
+            with col2:
+                molecule_name = None
+                for i, row in enumerate(["C", "CCO", "CC(=O)OC1=CC=CC=C1C(=O)O", "C1=CC=CC=C1", 
+                                         "CC(C)Cc1ccc(cc1)C(C)C(=O)O", "CC1=C2C(=CC=C1)C3C(OC2C4C3(OC(=O)C4=C)C5=C6C(=C7C(=C5)OCO7)C(=O)O6)OC(=O)CCO"]):
+                    if smiles == row:
+                        molecule_name = ["Methane", "Ethanol", "Aspirin", "Benzene", "Ibuprofen", "Taxol"][i]
+                        break
+                if molecule_name:
+                    st.markdown(f"<h2 style='color:#4CAF50; font-size: 28px;'>{molecule_name}</h2>", unsafe_allow_html=True)
+                else:
+                    st.markdown(f"<h2 style='color:#4CAF50; font-size: 28px;'>Unknown Compound</h2>", unsafe_allow_html=True)
 
             # Generate 3D coordinates for visualization
             AllChem.EmbedMolecule(mol)
@@ -74,7 +92,38 @@ with tabs[1]:
         ]
     }
     
-    # Convert to pandas DataFrame and display
-    df = pd.DataFrame(test_cases)
     st.markdown("### 🧪 Test Cases")
-    st.table(df)
+
+    # Convert to pandas DataFrame
+    df = pd.DataFrame(test_cases)
+
+    # Display table with copy icon
+    for i, row in df.iterrows():
+        col1, col2, col3 = st.columns([3, 2, 1])
+        with col1:
+            st.write(row["SMILES String"])
+        with col2:
+            st.write(row["Molecule"])
+        with col3:
+            # Add a copy button
+            if st.button(f"📋 Copy {i}", key=f"copy_{i}"):
+                pyperclip.copy(row["SMILES String"])
+                st.success(f"Copied: `{row['SMILES String']}`")
+
+---
+
+### ✅ **Changes Made:**
+1. Used `st.columns()` to align the SMILES string, molecule name, and copy button.
+2. Added a `pyperclip.copy()` function to copy the SMILES string to the clipboard.
+3. Improved styling of the table for better readability.
+
+---
+
+### 🚀 **How It Works:**
+- Clicking the "📋 Copy" button next to any row will copy the SMILES string to the clipboard.
+- A success message will confirm the action.
+
+---
+
+### 💡 **Next Step:**  
+Would you like to adjust the size of the copy button or modify the layout further? 😎
