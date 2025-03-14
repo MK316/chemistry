@@ -61,14 +61,16 @@ with tabs[1]:
             "CCO", 
             "CC(=O)OC1=CC=CC=C1C(=O)O", 
             "C1=CC=CC=C1", 
-            "CC(C)Cc1ccc(cc1)C(C)C(=O)O"
+            "CC(C)Cc1ccc(cc1)C(C)C(=O)O",
+            "CC1=C2C(=CC=C1)C3C(OC2C4C3(OC(=O)C4=C)C5=C6C(=C7C(=C5)OCO7)C(=O)O6)OC(=O)CCO"
         ],
         "Molecule": [
             "Methane", 
             "Ethanol", 
             "Aspirin", 
             "Benzene", 
-            "Ibuprofen"
+            "Ibuprofen",
+            "Taxol"
         ]
     }
     
