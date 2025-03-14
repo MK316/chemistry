@@ -7,7 +7,7 @@ st.set_page_config(page_title="Chemistry Learning Apps", page_icon="🧪")
 st.markdown("### 🔬 Chemistry Learning App Gallery")
 st.caption(
     """
-    Welcome to the Chemistry Learning Apps! This platform is designed to help future chemistry teachers understand how to integrate technology into their teaching. This platform was created to demonstrate how Streamlit can be used to build educational apps for future chemistry teachers. (Since Mar. 10, 2025)  
+    Welcame to the Chemistry Learning Apps! This platform is designed to help future chemistry teachers understand how to integrate technology into their teaching. This platform was created to demonstrate how Streamlit can be used to build educational apps for future chemistry teachers. (Since Mar. 10, 2025)  
     """)
 
 # ✅ Add images using columns
