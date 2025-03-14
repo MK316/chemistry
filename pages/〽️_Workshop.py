@@ -94,12 +94,13 @@ with tab1:
 
 ########################
 with tab2:
-    st.markdown("### 💻 Useful Platforms for Coding and Application Design")
+    st.markdown("### 🌳 Useful Platforms for Coding and Application Design")
 
-    st.write("""
+    st.caption("""
     Here are some key platforms useful for education and coding-based application designs:
     """)
-
+    st.markdown("---")
+    
     platforms = {
         "Python": {
             "link": "https://www.python.org/",
@@ -137,6 +138,7 @@ with tab2:
 
     for platform, info in platforms.items():
         st.markdown(f"🌱 **[{platform}]({info['link']})** — {info['description']}")
+        st.markdown("---")
 
     
 
